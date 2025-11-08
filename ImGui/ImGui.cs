@@ -12,7 +12,6 @@ public partial class ImGui : BasePlugin
 {
     private Harmony Harmony { get; } = new(Id);
     public new static ManualLogSource Log;
-    public static bool IsToggleEnabled { get; set; }
 
     // Asset stuff
     private static GameObject _lobbyPaintObject;
@@ -53,6 +52,10 @@ public class Menu : MonoBehaviour
     // Create a rect for the window
     public Rect windowRect = new(10f, 10f, 200f, 300f);
     public bool showWindow = true;
+    public static bool IsToggleEnabled;
+    public static float SliderValue;
+    public static string TextFieldString = "Text Field";
+    public static string TextAreaString = "Text Area";
 
     // Override OnGUI to draw the window
     public void OnGUI()
@@ -91,9 +94,9 @@ public class Menu : MonoBehaviour
         }
 
         // Add a toggle using GUILayout.Toggle
-        ImGui.IsToggleEnabled = GUILayout.Toggle(ImGui.IsToggleEnabled, "Example Toggle");
+        IsToggleEnabled = GUILayout.Toggle(IsToggleEnabled, "Example Toggle");
 
-        if (ImGui.IsToggleEnabled)
+        if (IsToggleEnabled)
         {
             // Add your logic here for when the toggle is enabled
             // Ideally you want to create a separate method to handle the toggle state
@@ -105,19 +108,18 @@ public class Menu : MonoBehaviour
             // ImGui.Log.LogInfo($"Example Toggle is disabled!");
         }
 
-        // Things like sliders or text fields do not work because of stripping
-
         // Add a slider using GUILayout.HorizontalSlider
-        //var sliderValue = GUILayout.HorizontalSlider(0.5f, 0f, 1f);
-        //ImGui.Log.LogInfo($"Slider value: {sliderValue}");
+        SliderValue = GUILayout.HorizontalSlider(SliderValue, 0f, 5f);
+        GUILayout.Label($"Slider Value: {SliderValue}");
+        //ImGui.Log.LogInfo($"Slider value: {SliderValue}");
 
         // Add a text field using GUILayout.TextField
-        //var textFieldValue = GUILayout.TextField("Text Field");
-        //ImGui.Log.LogInfo($"Text field value: {textFieldValue}");
+        //TextFieldString = GUILayout.TextField(TextFieldString);
+        //ImGui.Log.LogInfo($"Text field value: {TextFieldString}");
 
         // Add a text area using GUILayout.TextArea
-        //var textAreaValue = GUILayout.TextArea("Text Area");
-        //ImGui.Log.LogInfo($"Text area value: {textAreaValue}");
+        //TextAreaString = GUILayout.TextArea(TextAreaString);
+        //ImGui.Log.LogInfo($"Text area value: {TextAreaString}");
 
 
         // Make the window resizable
