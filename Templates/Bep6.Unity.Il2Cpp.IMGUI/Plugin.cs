@@ -4,44 +4,25 @@ using BepInEx.Unity.IL2CPP;
 using UnityEngine;
 using HarmonyLib;
 
-namespace BepInExTemplates.ImGui;
+namespace Bep6.Unity.Il2Cpp;
 
 [BepInAutoPlugin]
-[BepInProcess("Among Us.exe")]
+[BepInProcess("CoolGame.exe")]
 public partial class ImGui : BasePlugin
 {
     private Harmony Harmony { get; } = new(Id);
     public new static ManualLogSource Log;
 
-    // Asset stuff
-    private static GameObject _lobbyPaintObject;
-    private static Sprite _lobbyPaintSprite;
-
     public override void Load()
     {
+        // Plugin startup logic
         Log = base.Log;
 
         Harmony.PatchAll();
 
-        // Add the Menu component to the game object
         AddComponent<Menu>();
-    }
 
-    [HarmonyPatch(typeof(LobbyBehaviour), nameof(LobbyBehaviour.Start))]
-    public class ExampleSpriteUsage
-    {
-        public static void Postfix()
-        {
-            // Example of how to use the sprite
-            _lobbyPaintSprite = EmbeddedResource.EmbeddedResource.LoadSprite("BepInExImGuiTemplate.Assets.sandalinus.png");
-            var leftBox = GameObject.Find("Leftbox");
-            if (!leftBox) return;
-            _lobbyPaintObject = Object.Instantiate(leftBox, leftBox.transform.parent.transform);
-            _lobbyPaintObject.name = "Lobby Paint";
-            _lobbyPaintObject.transform.localPosition = new Vector3(0.042f, -2.59f, -10.5f);
-            var renderer = _lobbyPaintObject.GetComponent<SpriteRenderer>();
-            renderer.sprite = _lobbyPaintSprite;
-        }
+        Log.LogInfo($"Plugin {Id} is loaded!");
     }
 }
 
@@ -120,34 +101,6 @@ public class Menu : MonoBehaviour
         // Add a text area using GUILayout.TextArea
         //TextAreaString = GUILayout.TextArea(TextAreaString);
         //ImGui.Log.LogInfo($"Text area value: {TextAreaString}");
-
-
-        // Make the window resizable
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Make Window Narrower"))
-        {
-            ImGui.Log.LogInfo("Make Window Narrower button was pressed!");
-            windowRect.width -= 10f;
-        }
-        if (GUILayout.Button("Make Window Wider"))
-        {
-            ImGui.Log.LogInfo("Make Window Wider button was pressed!");
-            windowRect.width += 10f;
-        }
-        GUILayout.EndHorizontal();
-
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Make Window Shorter"))
-        {
-            ImGui.Log.LogInfo("Make Window Shorter button was pressed!");
-            windowRect.height -= 10f;
-        }
-        if (GUILayout.Button("Make Window Taller"))
-        {
-            ImGui.Log.LogInfo("Make Window Taller button was pressed!");
-            windowRect.height += 10f;
-        }
-        GUILayout.EndHorizontal();
 
         // Make the window draggable
         GUI.DragWindow();

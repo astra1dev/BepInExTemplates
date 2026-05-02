@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "astra1dev",
+  "classifications": [ "BepInEx", "BepInEx 6" , "Plugin", "Unity", "Il2Cpp", "IMGUI" ],
+  "identity": "BepInEx6.Plugin.Unity.Il2Cpp.IMGUI",
+  "name": "BepInEx 6 Unity Il2Cpp Plugin with IMGUI",
+  "shortName": "bep6plugin_unity_il2cpp_imgui",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": true,
+  "sourceName": "Bep6.Unity.Il2Cpp.IMGUI",
+  "symbols": {
+    "TargetFramework": {
+      "type": "parameter",
+      "description": "The target framework for the project",
+      "datatype": "text",
+      "defaultValue": "netstandard2.1",
+      "replaces": "netstandard2.1"
+    },
+    "Description": {
+      "type": "parameter",
+      "description": "Plugin description",
+      "datatype": "text",
+      "replaces": "My first plugin",
+      "defaultValue": "My first plugin"
+    },
+    "Version": {
+      "type": "parameter",
+      "description": "Plugin version",
+      "datatype": "text",
+      "replaces": "{version}",
+      "defaultValue": "1.0.0"
+    }
+  }
+}
