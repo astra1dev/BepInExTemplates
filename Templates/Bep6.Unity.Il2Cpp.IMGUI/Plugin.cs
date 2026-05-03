@@ -4,11 +4,11 @@ using BepInEx.Unity.IL2CPP;
 using UnityEngine;
 using HarmonyLib;
 
-namespace Bep6.Unity.Il2Cpp;
+namespace Bep6.Unity.Il2Cpp.IMGUI;
 
 [BepInAutoPlugin]
-[BepInProcess("CoolGame.exe")]
-public partial class ImGui : BasePlugin
+[BepInProcess("{game}.exe")]
+public partial class Plugin : BasePlugin
 {
     private Harmony Harmony { get; } = new(Id);
     public new static ManualLogSource Log;

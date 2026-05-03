@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <!-- Replace CoolGame with the environment variable that points to the game folder -->
-  <Target Name="Copy" AfterTargets="Build" Condition="'$(CoolGame)' != ''">
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(CoolGame)/BepInEx/plugins/" UseSymboliclinksIfPossible="true" />
+  <Target Name="Copy" AfterTargets="Build" Condition="'$({game})' != ''">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$({game})/BepInEx/plugins/" UseSymboliclinksIfPossible="true" />
   </Target>
 </Project>

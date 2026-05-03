@@ -52,6 +52,11 @@ Options:
   -V|--Version          Plugin version
                         text - Optional
                         Default: 1.0.0
+                        
+  -G|--GameName         The name of the game this plugin is for
+                        text - Optional
+                        Default: MyGame
+                        
 ```
 
 After creating your project, you can open it in your IDE and start developing your plugin.
@@ -70,11 +75,11 @@ This template is for creating a BepInEx 6 plugin for Unity Il2Cpp games. It incl
 
 Here's some steps to get you started:
 1. Your project ***will not compile*** out of the box. You'll get an error like `The type or namespace name 'UnityEngine' could not be found (are you missing a using directive or an assembly reference?)`. 
-   That's because you need to [reference the game libraries](https://docs.bepinex.dev/master/articles/dev_guide/plugin_tutorial/2_plugin_start.html?tabs=tabid-unityil2cpp) first.
-2. Replace the `[BepInProcess("CoolGame.exe")]` attribute in `Plugin.cs` with the actual name of the game's executable.
+   That's because you need to [reference the game libraries](https://docs.bepinex.dev/master/articles/dev_guide/plugin_tutorial/2_plugin_start.html?tabs=tabid-unityil2cpp#referencing-game-libraries) first.
+2. Edit the `BepInProcess` attribute in `Plugin.cs` with the actual name of the game's executable.
 3. Create an environment variable that points to your game folder (the folder that contains the game executable). 
    For example, you can create an environment variable named `AMONGUS_DIR` that points to `C:\Program Files (x86)\Steam\steamapps\common\Among Us`. 
-   Then open your generated project's .csproj file and replace all occurrences of `CoolGame` in the post-build copy target with your environment variable name (for example, `AMONGUS_DIR`).
+   Then open your generated project's .csproj file and edit the post-build copy target to use your environment variable (for example, `AMONGUS_DIR`).
 4. Build your project with `dotnet build` to create the plugin DLL and automatically copy it to the BepInEx plugins folder.
 5. Run the game to see your plugin in action!
 6. For more guides, refer to the official [BepInEx Docs](https://docs.bepinex.dev/master/articles/index.html).
