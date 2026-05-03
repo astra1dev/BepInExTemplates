@@ -83,6 +83,10 @@ Here's some steps to get you started:
 4. Build your project with `dotnet build` to create the plugin DLL and automatically copy it to the BepInEx plugins folder.
 5. Run the game to see your plugin in action!
 6. For more guides, refer to the official [BepInEx Docs](https://docs.bepinex.dev/master/articles/index.html).
+7. Refer to the [Unity IMGUI documentation](https://docs.unity3d.com/Manual/GUIScriptingGuide.html) for more information on how to work with IMGUI.
+
+Some games have stripped libraries, which means that some IMGUI methods may not be available, and you will get runtime errors when trying to use them.
+In that case, you will have to find workarounds, e.g. by implementing your own IMGUI elements.
 
 # Credits
 
