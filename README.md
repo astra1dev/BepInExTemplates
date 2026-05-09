@@ -93,3 +93,4 @@ In that case, you will have to find workarounds, e.g. by implementing your own I
 # Credits
 
 - [BepInEx.Templates](https://github.com/BepInEx/BepInEx.Templates) - main inspiration
+- [Lucide](https://lucide.dev/) - icons
