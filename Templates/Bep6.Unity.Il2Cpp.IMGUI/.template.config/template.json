@@ -9,7 +9,7 @@
     "language": "C#",
     "type": "project"
   },
-  "preferNameDirectory": true,
+  "preferNameDirectory": false,
   "sourceName": "Bep6.Unity.Il2Cpp.IMGUI",
   "symbols": {
     "TargetFramework": {

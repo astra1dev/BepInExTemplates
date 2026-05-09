@@ -25,11 +25,13 @@ If you use Rider or Visual Studio, you will be able to select the templates when
 
 Example:
 
-```
+```bash
+mkdir MyPluginName
+cd MyPluginName
 dotnet new bep6plugin_unity_il2cpp_imgui -n MyPluginName
 ```
 
-This will create a folder name MyPluginName with an example plugin project.
+This will create the plugin project in the current directory.
 
 All templates have additional options. To view them, use `--help` switch. For example:
 
